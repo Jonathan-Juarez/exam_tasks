@@ -9,6 +9,26 @@ La aplicación fue construida con:
  - **Microsoft Server SQL (mssql)** (Base de Datos).
  - **Visual Studio Code (VS Code)** como IDE principal.
 
+## Base de datos
+El script utilizado en la base de datos es el siguiete:
+```SQL
+CREATE DATABASE Taskexpress
+USE Taskexpress
+GO
+
+
+CREATE TABLE Tasks (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    title NVARCHAR(200) NOT NULL,
+    description_ NVARCHAR(200) NULL,
+    dueDate DATE NOT NULL,
+    priority_ NVARCHAR(20) NOT NULL CHECK (priority_ IN ('Low','Medium','High')),
+    status_ NVARCHAR(20) NOT NULL CHECK (status_ IN ('Pending','In Progress','Completed','Canceled')),
+    recurringTask BIT NOT NULL DEFAULT 0,
+	createdAt DATETIME NOT NULL DEFAULT GETDATE()
+)
+```
+Este script crea y usa la tabla con la columnas utilizadas en la aplicación.
 
 ## Ejecución
 
